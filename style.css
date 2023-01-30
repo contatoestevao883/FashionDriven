@@ -38,6 +38,17 @@ main li{
     background-color: #F2F2F2;
     margin: 10px 10px 10px 50px;
 }
+.selectedModelo{
+    border: 2px solid #404EED;
+}
+
+.selectedGola{
+    border: 2px solid #404EED;
+}
+
+.selectedTecido{
+    border: 2px solid #404EED;
+}
 main ul img{
     width: 70px;
     height: 70px;

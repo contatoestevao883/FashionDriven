@@ -19,25 +19,25 @@
         <div class="box">
             <span>Escolha o modelo</span>
             <ul>
-                <li><img src="/img/tshirt.png"></li>
-                <li><img src="/img/Camiseta.png"></li>
-                <li><img src="/img/Mangalonga.png"></li>
+                <li onclick="itemSelectedModelo('.modelo1')" class="modelo1"><img src="/img/tshirt.png"></li>
+                <li onclick="itemSelectedModelo('.modelo2')" class="modelo2"><img src="/img/Camiseta.png"></li>
+                <li onclick="itemSelectedModelo('.modelo3')" class="modelo3"><img src="/img/Mangalonga.png"></li>
             </ul>
             <span>Escolha a gola</span>
             <ul>
-                <li><img src="/img/GolaV.png"></li>
-                <li><img src="/img/GolaRedonda.png"></li>
-                <li><img src="/img/GolaPolo.png"></li>
+                <li onclick="itemSelectedGola('.gola1')" class="gola1"><img src="/img/GolaV.png"></li>
+                <li onclick="itemSelectedGola('.gola2')" class="gola2"><img src="/img/GolaRedonda.png"></li>
+                <li onclick="itemSelectedGola('.gola3')" class="gola3"><img src="/img/GolaPolo.png"></li>
             </ul>
             <span>Escolha o tecido</span>
             <ul>
-                <li><img src="/img/Seda.png"></li>
-                <li><img src="/img/Algodão.png"></li>
-                <li><img src="/img/Poliester.png"></li>
+                <li onclick="itemSelectedTecido('.tecido1')" class="tecido1"><img src="/img/Seda.png"></li>
+                <li onclick="itemSelectedTecido('.tecido2')" class="tecido2"><img src="/img/Algodão.png"></li>
+                <li onclick="itemSelectedTecido('.tecido3')" class="tecido3"><img src="/img/Poliester.png"></li>
             </ul>
             <span>Imagem de referência</span>
-            <input type="text" placeholder="Insira o link">
-            <button>Confirmar pedido</button>
+            <input required type="text" placeholder="Insira o link">
+            <button class="button">Confirmar pedido</button>
         </div>
         <div class="ilustration">
             <img src="img/ilustração.png">
