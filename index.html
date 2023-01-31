@@ -19,25 +19,52 @@
         <div class="box">
             <span>Escolha o modelo</span>
             <ul>
-                <li onclick="itemSelectedModelo('.modelo1')" class="modelo1"><img src="/img/tshirt.png"></li>
-                <li onclick="itemSelectedModelo('.modelo2')" class="modelo2"><img src="/img/Camiseta.png"></li>
-                <li onclick="itemSelectedModelo('.modelo3')" class="modelo3"><img src="/img/Mangalonga.png"></li>
+                <div onclick="materialModelo(this)">
+                    <li onclick="itemSelectedModelo('.modelo1')" class="modelo1"><img src="/img/tshirt.png"></li>
+                    <h3>T-shirt</h3>
+                </div>  
+                <div  onclick="materialModelo(this)">
+                    <li onclick="itemSelectedModelo('.modelo2')" class="modelo2"><img src="/img/Camiseta.png"></li>
+                    <h3>Camiseta</h3>
+                </div>
+                <div  onclick="materialModelo(this)">
+                    <li onclick="itemSelectedModelo('.modelo3')" class="modelo3"><img src="/img/Mangalonga.png"></li>
+                    <h3>Manga longa</h3>
+                </div>
             </ul>
             <span>Escolha a gola</span>
             <ul>
-                <li onclick="itemSelectedGola('.gola1')" class="gola1"><img src="/img/GolaV.png"></li>
-                <li onclick="itemSelectedGola('.gola2')" class="gola2"><img src="/img/GolaRedonda.png"></li>
-                <li onclick="itemSelectedGola('.gola3')" class="gola3"><img src="/img/GolaPolo.png"></li>
+                <div onclick="materialGola(this)">
+                    <li onclick="itemSelectedGola('.gola1')" class="gola1"><img src="/img/GolaV.png"></li>
+                    <h3 >Gola V</h3>
+                </div>
+                <div onclick="materialGola(this)">
+                    <li onclick="itemSelectedGola('.gola2')" class="gola2"><img src="/img/GolaRedonda.png"></li>
+                    <h3>Gola Redonda</h3>
+                </div>
+                <div onclick="materialGola(this)">
+                    <li onclick="itemSelectedGola('.gola3')" class="gola3"><img src="/img/GolaPolo.png"></li>
+                    <h3>Gola polo</h3>
+                </div>
             </ul>
             <span>Escolha o tecido</span>
             <ul>
-                <li onclick="itemSelectedTecido('.tecido1')" class="tecido1"><img src="/img/Seda.png"></li>
-                <li onclick="itemSelectedTecido('.tecido2')" class="tecido2"><img src="/img/Algodão.png"></li>
-                <li onclick="itemSelectedTecido('.tecido3')" class="tecido3"><img src="/img/Poliester.png"></li>
+                <div onclick="materialTecido(this)">
+                    <li onclick="itemSelectedTecido('.tecido1')" class="tecido1"><img src="/img/Seda.png"></li>
+                    <h3>Seda</h3>
+                </div>
+                <div onclick="materialTecido(this)">
+                    <li onclick="itemSelectedTecido('.tecido2')" class="tecido2"><img src="/img/Algodão.png"></li>
+                    <h3>Algodão</h3>
+                </div>
+                <div onclick="materialTecido(this)">
+                    <li onclick="itemSelectedTecido('.tecido3')" class="tecido3"><img src="/img/Poliester.png"></li>
+                    <h3>Poliéster</h3>
+                </div>
             </ul>
             <span>Imagem de referência</span>
-            <input required type="text" placeholder="Insira o link">
-            <button class="button">Confirmar pedido</button>
+            <input onchange="onChange(this.value)" required type="text" placeholder="Insira o link">
+            <button disabled onclick="mostrarBlusa()" class="button">Confirmar pedido</button>
         </div>
         <div class="ilustration">
             <img src="img/ilustração.png">
@@ -55,6 +82,7 @@
             </div>
          </div>
      </footer>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
