@@ -109,19 +109,19 @@ function materialTecido(materialEscolhido){
 }
 
 function montarBlusa(){
-    const newObject = {
-		"id": number,
-		"model": string,
-		"neck": string,
-		"material": string,
-		"image": string,
-		"owner": string,
-		"author": string
-	}
-
-    const promise = axios.get('https://mock-api.driven.com.br/api/v4/shirts-api/shirts', newObject );
+    const promise = axios.get('https://mock-api.driven.com.br/api/v4/shirts-api/shirts');
+    const box = document.querySelector('.box-2');
     promise.then((res) =>{
-        console.log(res);
+        data = res.data
+        console.log(data);
+        let listOfClothes = data.forEach((element) =>{
+            box.innerHTML += `
+                <div class="container">
+                    <img src="${element.image}">
+                    <span><strong>Criador: ${element.owner}</strong></span>
+                </div>
+            `
+        })
     })
     promise.catch((err) => {
         console.log(err);
@@ -132,7 +132,6 @@ function montarBlusa(){
 montarBlusa();
 
 function mostrarBlusa(){
-    const box = document.querySelector('.box');
     const inputValue = document.querySelector('input').value;
 
     const newObject = {
@@ -156,5 +155,8 @@ function error(erro){
     console.log(erro);
     if ( statusCode === 422){
         alert('Ops, não conseguimos processar sua encomenda.');
+        let mensagem = erro.response.data.message;
+
+        console.log(mensagem)
     }
 }

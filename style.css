@@ -79,7 +79,7 @@ main ul img{
     display: flex;
     background-color: #404EED;
     width: 1120px;
-    height: 755px;
+    height: 850px;
     margin-left: 150px;
 }
 .ilustration img{
@@ -121,6 +121,7 @@ footer{
     font-size: 24px;
     color: #232323;
     margin-top: 170px;
+    margin-bottom: 20px;
     margin-left: 140px;
 
 }
@@ -135,9 +136,14 @@ footer{
     flex-direction: column;
     flex-wrap: nowrap;
     margin-top: 20px;
-    margin: 20px;
+    margin: 22px;
 }
 .container img{
-    width: 170px;
-    height: 180px;
+    width: 130px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.container span{
+    margin-bottom: 50px;
 }
