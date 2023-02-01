@@ -39,7 +39,7 @@ function itemSelectedTecido(pedidoClicado3){
 let input;
 function onChange(value){
     if(value !== ""){
-        buttonActive()
+        buttonActive();   
     }
 }
 
@@ -54,7 +54,7 @@ function buttonActive(){
         button.style.color = 'white';
         button.style.cursor = 'pointer';
         button.disabled = false;
-    }
+    }  
 }
 let modelo;
 function materialModelo(materialEscolhido){
@@ -108,21 +108,22 @@ function materialTecido(materialEscolhido){
 
 }
 
+
 function montarBlusa(){
     const promise = axios.get('https://mock-api.driven.com.br/api/v4/shirts-api/shirts');
     const box = document.querySelector('.box-2');
     promise.then((res) =>{
-        data = res.data
+        data = res.data;
         console.log(data);
         let listOfClothes = data.forEach((element) =>{
             box.innerHTML += `
-                <div class="container">
+                <div class="container" id="${element.id}" onclick="blusaUltimosPedidos(this)">
                     <img src="${element.image}">
                     <span><strong>Criador: ${element.owner}</strong></span>
                 </div>
-            `
-        })
-    })
+            `;
+        });
+    });
     promise.catch((err) => {
         console.log(err);
     });
@@ -145,9 +146,10 @@ function mostrarBlusa(){
     const promise = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts', newObject)
     promise.then((res) =>{
         console.log(res)
-        alert('Encomenda confirmada!!!')
+        alert('Encomenda confirmada!!!');
+        window.location.reload();  
     })
-    promise.catch(error)
+    promise.catch(error);
 }
 
 function error(erro){
@@ -157,6 +159,61 @@ function error(erro){
         alert('Ops, não conseguimos processar sua encomenda.');
         let mensagem = erro.response.data.message;
 
-        console.log(mensagem)
+        console.log(mensagem);
     }
 }
+
+function blusaUltimosPedidos(blusaSelecionada){;
+    if(window.confirm('Você deseja encomendar essa blusa?')){
+        const promise = axios.get('https://mock-api.driven.com.br/api/v4/shirts-api/shirts');
+        promise.then((res) =>{
+            response = res.data;
+            let newData = response.find((dado) =>{
+                console.log(dado.id)
+                let numBlusaSelecionda = Number(blusaSelecionada.id)
+             if(dado.id === numBlusaSelecionda){
+                if(dado.model === 't-shirt'){
+                    dado.model = 'T-shirt';
+                }
+                if(dado.model === 'top-tank'){
+                    modelo = 'Camiseta';
+                }
+                if(dado.model === 'long'){
+                    dado.model = 'Manga longa';
+                }
+
+
+                if(dado.neck === 'v-neck'){
+                    dado.neck = 'Gola V';
+                }
+                if(dado.neck === 'round'){
+                    dado.neck = 'Gola Redonda';
+                }
+                if(dado.neck === 'polo'){
+                    dado.neck = 'Gola polo';
+                }
+            
+
+                if(dado.material === 'silk'){
+                    dado.material = 'Seda';
+                }
+                if(dado.material === 'cotton'){
+                    dado.material = 'Algodão';
+                }
+                if(dado.material === 'polyester'){
+                    dado.material = 'Poliéster';
+                }
+            
+                return alert(`Dados da sua encomenda:
+                            - Modelo: ${dado.model} 
+                            - Gola: ${dado.neck}
+                            - Tecido: ${dado.material}
+                            
+                            - Criador: ${dado.owner}
+                `);
+             }
+            });
+            console.log(newData);
+            });
+         }
+}   
