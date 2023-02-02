@@ -10,6 +10,7 @@ function itemSelectedModelo(pedidoClicado){
         selected.classList.remove('selectedModelo');
     }
     model.classList.add('selectedModelo');
+    
 }
 
 function itemSelectedGola(pedidoClicado2){
@@ -21,7 +22,7 @@ function itemSelectedGola(pedidoClicado2){
         selected.classList.remove('selectedGola');
     }
     gola.classList.add('selectedGola');
-
+    
 }
 
 function itemSelectedTecido(pedidoClicado3){
@@ -34,13 +35,16 @@ function itemSelectedTecido(pedidoClicado3){
         selected.classList.remove('selectedTecido');
     }
     tecido.classList.add('selectedTecido');
+   
 }
 
 let input;
 function onChange(value){
-    if(value !== ""){
+    const regex = /(https?:\/\/.*\.(?:png|jpg))/i;
+    if(value !== "" && regex.test(value)){
         buttonActive();   
     }
+   
 }
 
 function buttonActive(){
@@ -170,13 +174,21 @@ function blusaUltimosPedidos(blusaSelecionada){;
             response = res.data;
             let newData = response.find((dado) =>{
                 console.log(dado.id)
+                const newObject = {
+                    "model": dado.model,
+                    "neck": dado.neck,
+                    "material": dado.material,
+                    "image": dado.image,
+                    "owner": dado.owner,
+                    "author": dado.owner
+                }
                 let numBlusaSelecionda = Number(blusaSelecionada.id)
              if(dado.id === numBlusaSelecionda){
                 if(dado.model === 't-shirt'){
                     dado.model = 'T-shirt';
                 }
                 if(dado.model === 'top-tank'){
-                    modelo = 'Camiseta';
+                    dado.model = 'Camiseta';
                 }
                 if(dado.model === 'long'){
                     dado.model = 'Manga longa';
@@ -203,14 +215,20 @@ function blusaUltimosPedidos(blusaSelecionada){;
                 if(dado.material === 'polyester'){
                     dado.material = 'Poliéster';
                 }
-            
-                return alert(`Dados da sua encomenda:
-                            - Modelo: ${dado.model} 
-                            - Gola: ${dado.neck}
-                            - Tecido: ${dado.material}
-                            
-                            - Criador: ${dado.owner}
+                 alert(`Dados da sua encomenda:
+
+                                    - Modelo: ${dado.model} 
+                                    - Gola: ${dado.neck}
+                                    - Tecido: ${dado.material}
+                                    
+                                    - Criador: ${dado.owner}
                 `);
+                const promise = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts', newObject)
+                promise.then((res) =>{
+                    console.log(res)
+                    alert('Encomenda confirmada!!!');
+                })
+                promise.catch(error);
              }
             });
             console.log(newData);

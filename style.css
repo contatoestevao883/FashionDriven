@@ -83,7 +83,7 @@ main ul img{
     margin-left: 150px;
 }
 .ilustration img{
-    margin-left: 270px;
+    margin-left: 220px;
 }
 
 input{
@@ -133,6 +133,7 @@ footer{
 
 .container{
     display: flex;
+    text-align: center;
     flex-direction: column;
     flex-wrap: nowrap;
     margin-top: 20px;
@@ -146,4 +147,62 @@ footer{
 
 .container span{
     margin-bottom: 50px;
+    width: 100px;
+
 }
+
+/* 600px x 882px */
+
+@media (max-width: 600px){
+    body{
+        background-color: #40a8ed;
+    }
+
+    header {
+        text-align: center;
+    }
+    main{
+        margin-left: 0;
+        justify-content: center;
+
+    }
+
+    .box{
+
+    }
+    .ilustration{
+        display: none;
+    }
+
+    .span{
+        margin-left: 80px;
+    
+    }
+
+    footer{
+        display: flex;
+        margin-left: 80px;
+        width: 400px;
+        overflow: hidden;
+    }
+    
+    .box-2{
+        overflow-x: auto;
+    }
+
+    .container{
+        margin-bottom: 20px;
+    }
+
+    .container img{
+        margin-bottom: 0;
+    }
+    
+    .container span{
+        width: 100px;
+        margin-bottom: 0px;
+        
+    }
+}
+
+
