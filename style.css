@@ -154,10 +154,6 @@ footer{
 /* 600px x 882px */
 
 @media (max-width: 600px){
-    body{
-        background-color: #40a8ed;
-    }
-
     header {
         text-align: center;
     }
@@ -167,9 +163,6 @@ footer{
 
     }
 
-    .box{
-
-    }
     .ilustration{
         display: none;
     }
